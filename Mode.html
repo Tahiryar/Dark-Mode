@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light / Dark mode</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            background-color: #f0f0f0; /* Light background color */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .container {
+            display: flex; /* Use flexbox to align items in a row */
+            align-items: center; /* Center items vertically */
+        }
+
+        h1 {
+            margin-right: 10px; /* Space between h1 and icon */
+            color: black; /* Default color */
+            transition: color 0.3s; /* Smooth transition */
+        }
+
+        .moon-icon {
+            cursor: pointer; /* Change cursor to pointer for interactivity */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dark Mode</h1>
+        <div class="moon-icon">
+            <box-icon name='moon'></box-icon>
+        </div>
+    </div>
+    <script>
+        let moon = document.querySelector('.moon-icon');
+        let h1 = document.querySelector('h1');
+        let isDarkMode = false; // Track the current mode
+
+        moon.addEventListener('click', () => {
+            if (isDarkMode) {
+                // Switch to light mode
+                document.body.style.backgroundColor = "#f0f0f0"; // Light background
+                h1.style.color = "black"; // H1 black
+                moon.innerHTML = "<box-icon name='moon'></box-icon>"; // Moon icon
+            } else {
+                // Switch to dark mode
+                document.body.style.backgroundColor = "Darkblue"; // Dark background
+                h1.style.color = "white"; // H1 white
+                moon.innerHTML = "<box-icon name='moon' type='solid' color='white'></box-icon>"; // Solid white moon icon
+            }
+            isDarkMode = !isDarkMode; // Toggle the mode
+        });
+    </script>
+</body>
+</html>
